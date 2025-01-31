@@ -1,12 +1,14 @@
-﻿using CleanArchitectureSample.Application.DTOs;
+﻿using Asp.Versioning;
+using CleanArchitectureSample.Application.DTOs;
 using CleanArchitectureSample.Application.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CleanArchitectureSample.API.Controllers
+namespace CleanArchitectureSample.API.Controllers.v1
 {
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/students")]
     [ApiController]
+    [ApiVersion("1.0")]
     public class StudentsController : ControllerBase
     {
         private readonly IStudentService _studentService;
@@ -21,13 +23,13 @@ namespace CleanArchitectureSample.API.Controllers
         {
             try
             {
-                var student = await _studentService.GetByIdAsync(id);               
+                var student = await _studentService.GetByIdAsync(id);
                 return Ok(student);
             }
             catch (InvalidOperationException ex)
             {
                 return NotFound(ex.Message);
-            }            
+            }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Internal server error: {ex.Message}");
@@ -60,7 +62,7 @@ namespace CleanArchitectureSample.API.Controllers
             {
                 var newStudent = await _studentService.AddAsync(studentDto);
                 return CreatedAtAction(nameof(GetStudent), new { id = newStudent.Id }, newStudent);
-            }            
+            }
             catch (ArgumentNullException ex)
             {
                 return BadRequest(ex.Message);
@@ -108,7 +110,7 @@ namespace CleanArchitectureSample.API.Controllers
         {
             try
             {
-                var student = await _studentService.GetByIdAsync(id);                
+                var student = await _studentService.GetByIdAsync(id);
                 var deleteResult = await _studentService.DeleteAsync(id);
                 if (deleteResult)
                 {
@@ -119,12 +121,12 @@ namespace CleanArchitectureSample.API.Controllers
                     return BadRequest("Failed to delete student.");
                 }
             }
-            catch (InvalidOperationException ex)            
-            {               
-                return NotFound(ex.Message); 
+            catch (InvalidOperationException ex)
+            {
+                return NotFound(ex.Message);
             }
             catch (Exception ex)
-            {                
+            {
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
