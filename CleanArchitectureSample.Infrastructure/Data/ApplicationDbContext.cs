@@ -15,5 +15,6 @@ namespace CleanArchitectureSample.Infrastructure.Data
 
         }
         public DbSet<StudentEF> Students { get; set; }
+        public DbSet<UserEF> Users { get; set; }
     }
 }
