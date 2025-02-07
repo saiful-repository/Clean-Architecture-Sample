@@ -1,6 +1,7 @@
 ﻿using Asp.Versioning;
 using CleanArchitectureSample.Application.DTOs;
 using CleanArchitectureSample.Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,6 +10,7 @@ namespace CleanArchitectureSample.API.Controllers.v1
     [Route("api/v{version:apiVersion}/students")]
     [ApiController]
     [ApiVersion("1.0")]
+    [Authorize]
     public class StudentsController : ControllerBase
     {
         private readonly IStudentService _studentService;

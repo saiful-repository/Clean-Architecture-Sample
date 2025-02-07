@@ -2,6 +2,10 @@ using Asp.Versioning;
 using CleanArchitectureSample.Application;
 using CleanArchitectureSample.Infrastructure;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using CleanArchitectureSample.Application.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,6 +43,31 @@ builder.Services.AddApiVersioning(options =>
     options.SubstituteApiVersionInUrl = true;
 });
 
+// Configure JWT Setting
+var JwtSettings = new JwtSettings();
+builder.Configuration.GetSection("JwtSettings").Bind(JwtSettings);
+builder.Services.AddSingleton(JwtSettings);
+
+// Configure JWT Authentication
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true, 
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = JwtSettings.Issuer,
+        ValidAudience = JwtSettings.Audience,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtSettings.SecretKey))
+    };
+});
+
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -54,6 +83,8 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 app.Run();
 

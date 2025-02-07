@@ -22,7 +22,7 @@ namespace CleanArchitectureSample.Infrastructure
             });
 
             services.AddTransient<IStudentRepository, StudentRepository>();
-
+            services.AddTransient<IUserRepository, UserRepository>();
             return services;
         }
     }

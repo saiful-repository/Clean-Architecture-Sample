@@ -23,7 +23,12 @@ namespace CleanArchitectureSample.Application
 
             services.AddTransient<IStudentService, StudentService>();
 
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IJwtService, JwtService>();
+
             services.AddAutoMapper(typeof(StudentMapperProfile));
+
+            services.AddAutoMapper(typeof(UserMapperProfile));
 
             return services;
         }
