@@ -1,21 +1,22 @@
-Clean Architecture with .NET 8
-This repository demonstrates the implementation of Clean Architecture using .NET 8. The project is structured to follow best practices, ensuring a maintainable, scalable, and testable architecture for building web applications and APIs.
+# Clean Architecture with .NET 8  
 
-Architecture Overview
-The solution is divided into multiple layers, each with a specific responsibility to ensure a clear separation of concerns:
+This repository demonstrates the implementation of **Clean Architecture** using **.NET 8**. The project follows best practices to ensure a **maintainable, scalable, and testable** architecture for building web applications or APIs.  
 
-Domain Layer – Contains core business logic and entities.
-Application Layer – Handles use cases, services, and application logic.
-Infrastructure Layer – Manages database access, third-party services, and external dependencies.
-API Layer (Web Layer) – Exposes endpoints, handles requests, and integrates other layers.
+## Architecture Overview  
+The project is structured into multiple layers, ensuring a clear **separation of concerns**:  
 
-Tech Stack
-.NET 8
-Entity Framework Core
-AutoMapper
-Swagger/OpenAPI
-Dependency Injection
+- **Domain Layer** – Contains business logic and entities.  
+- **Application Layer** – Contains use cases, interfaces, and DTOs.  
+- **Infrastructure Layer** – Implements persistence, authentication, and external integrations.  
+- **API Layer (Web Layer)** – Exposes endpoints and handles request processing.  
 
-Features
-API Versioning – Supports multiple API versions for better backward compatibility.
-JWT Authentication – Secure API endpoints using JSON Web Tokens.
+## Tech Stack  
+- **.NET 8**  
+- **Entity Framework Core**  
+- **AutoMapper**  
+- **Swagger/OpenAPI**  
+- **Dependency Injection**  
+
+## Features  
+- **API Versioning** – Supports multiple API versions for better backward compatibility.  
+- **JWT Authentication** – Secure API endpoints using JSON Web Tokens.  
