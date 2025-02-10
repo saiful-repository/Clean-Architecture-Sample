@@ -18,5 +18,6 @@ The project is structured into multiple layers, ensuring a clear **separation of
 - **Dependency Injection**  
 
 ## Features  
+- **JWT Authentication** – Secure API endpoints using JSON Web Tokens (Token generation and credential verification).  
 - **API Versioning** – Supports multiple API versions for better backward compatibility.  
-- **JWT Authentication** – Secure API endpoints using JSON Web Tokens.  
+- **CRUD Operations** – Implements Create, Read, Update, and Delete operations via API endpoints.  
