@@ -5,10 +5,10 @@ This repository demonstrates the implementation of **Clean Architecture** using 
 ## Architecture Overview  
 The project is structured into multiple layers, ensuring a clear **separation of concerns**:  
 
-- **Domain Layer** – Contains business logic and entities.  
-- **Application Layer** – Contains use cases, interfaces, and DTOs.  
-- **Infrastructure Layer** – Implements persistence, authentication, and external integrations.  
-- **API Layer (Web Layer)** – Exposes endpoints and handles request processing.  
+- **Domain Layer**
+- **Application Layer**
+- **Infrastructure Layer**
+- **API Layer (Web Layer)**
 
 ## Tech Stack  
 - **.NET 8**  
