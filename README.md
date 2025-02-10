@@ -15,7 +15,8 @@ The project is structured into multiple layers, ensuring a clear **separation of
 - **Entity Framework Core**  
 - **AutoMapper**  
 - **Swagger/OpenAPI**  
-- **Dependency Injection**  
+- **Dependency Injection**
+- **MSSQL**  
 
 ## Features  
 - **JWT Authentication** – Secure API endpoints using JSON Web Tokens (Token generation and credential verification).  
